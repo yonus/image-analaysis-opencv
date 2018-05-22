@@ -47,6 +47,27 @@ plt.title("red channel histogram")
 plt.show();
 
 
+#brightness
+alpha = 1.5; #contrast control
+beta = 50.0;  #brighness control
+constracted_image = cv2.multiply(myimage, np.array([alpha]))
+brigther_image = cv2.add(constracted_image, beta)
+
+RGB_image =  cv2.cvtColor(brigther_image, cv2.COLOR_BGR2RGB) 
+plt.imshow(RGB_image)
+plt.show();
+
+
+#histogram equailization
+equ = cv2.equalizeHist(RGB_image);
+stackedImage = np.hstack((brigther_image,equ))
+
+RGB_image =  cv2.cvtColor(brigther_image, cv2.COLOR_BGR2RGB) 
+plt.imshow(RGB_image)
+plt.show();
+
 #cv2.imshow('image',myimage)
 #cv2.waitKey(0)
 #cv2.destroyAllWindows()
+
+
